@@ -1,9 +1,9 @@
 {
-  "private": true,
   "name": "fusioncms-helper-js",
   "version": "0.0.0",
   "main": "./index.js",
   "bin": "./cli.js",
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
 }
