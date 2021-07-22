@@ -3,6 +3,7 @@ export default {
         return {
             form: null,
             extension: {},
+            entry: {},
             collection: {},
         }
     },
