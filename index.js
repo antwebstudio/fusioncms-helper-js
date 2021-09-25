@@ -6,6 +6,9 @@ export { Fieldset };
 import Extension from './services/Extension';
 export { Extension };
 
+import Collection from './services/Collection';
+export { Collection };
+
 const FusionHelper = {
 
 }
