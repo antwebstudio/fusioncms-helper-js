@@ -6,13 +6,13 @@ export default {
         // ConfirmModal,
     },
     methods: {
-        closeModal(name) {
+        closeModal(name, value) {
             //var name = 'price-setting-' + key
-            this.$bus.$emit('toggle-modal-' + name)
+            this.$bus.$emit('toggle-modal-' + name, value)
         },
-        openModal(name) {
+        openModal(name, value) {
             //var name = 'price-setting-' + key
-            this.$bus.$emit('toggle-modal-' + name)
+            this.$bus.$emit('toggle-modal-' + name, value)
         },
     },
 }
