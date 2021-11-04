@@ -1,5 +1,6 @@
 import Form from '@/services/Form'
 import crudMixin from 'fusioncms-helper-js/mixins/form'
+import flatten from 'flat'
 
 export { crudMixin }
 
@@ -28,7 +29,7 @@ function init(vm, response, fields, dataCallback) {
         vm.entry = response.data.data.entry || {}
     }
 
-    fields = _.merge(vm.entry, fields)
+    fields = _.merge(fields, flatten(vm.entry))
 
     if (vm.extension && vm.extension.fieldset) {
         _.forEach(extension.fieldset.sections, function(section) {
@@ -40,6 +41,12 @@ function init(vm, response, fields, dataCallback) {
 
 
     vm.form = new Form(fields, true)
+}
+
+export function loadFormBeforeRouteEnter(fields, next) {
+    next((vm) => {
+        vm.form = new Form(fields, true)
+    })
 }
 
 export function fieldsetToSection(fieldset) {

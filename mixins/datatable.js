@@ -5,6 +5,7 @@ export default {
         return {
             loading: true,
             displayable: [],
+            appendable: [],
             column_names: [],
             sortable: [],
             records: [],
@@ -34,12 +35,21 @@ export default {
             this.getRecords()
         }, 300)
     },
+    computed: {
+        deleteModalName() {
+            return 'delete-' + this.name
+        }
+    },
     methods: {
+        refreshDataTable(name) {
+            bus().$emit('refresh-datatable-' + name)
+        },
         getQueryParameters(params) {
             params = {
                 sort:    (this.sort.order === 'desc' ? '-' : '') + this.sort.key,
                 page:    this.pagination.currentPage,
                 perPage: this.pagination.perPage,
+                append: this.appendable.join(','),
                 ...params,
             }
 
@@ -56,6 +66,7 @@ export default {
                 this.records = response.data.records.data
                 this.displayable = response.data.displayable
                 this.sortable = response.data.sortable
+                this.appendable = response.data.appendable
                 this.column_names = response.data.column_names
                 this.pagination.totalRecords = response.data.records.total
                 this.pagination.totalPages = response.data.records.last_page

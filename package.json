@@ -5,6 +5,7 @@
   "bin": "./cli.js",
   "dependencies": {
     "axios": "^0.21.1",
+    "flat": "^5.0.2",
     "query-string": "^7.0.1"
   }
 }
