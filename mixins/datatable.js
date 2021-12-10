@@ -3,6 +3,7 @@ import queryString from 'query-string'
 export default {
     data() {
         return {
+            perPage: 10,
             loading: true,
             displayable: [],
             appendable: [],
@@ -66,7 +67,7 @@ export default {
                 this.records = response.data.records.data
                 this.displayable = response.data.displayable
                 this.sortable = response.data.sortable
-                this.appendable = response.data.appendable
+                this.appendable = response.data.appendable || []
                 this.column_names = response.data.column_names
                 this.pagination.totalRecords = response.data.records.total
                 this.pagination.totalPages = response.data.records.last_page

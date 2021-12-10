@@ -1,5 +1,6 @@
 import Form from '@/services/Form'
 import crudMixin from 'fusioncms-helper-js/mixins/form'
+import { processLoadedEntry } from 'fusioncms-helper-js/helpers/crud-helper'
 import flatten from 'flat'
 
 export { crudMixin }
@@ -29,12 +30,12 @@ function init(vm, response, fields, dataCallback) {
         vm.entry = response.data.data.entry || {}
     }
 
-    fields = _.merge(fields, flatten(vm.entry))
+    fields = _.merge(fields, processLoadedEntry(vm.entry))
 
     if (vm.extension && vm.extension.fieldset) {
-        _.forEach(extension.fieldset.sections, function(section) {
+        _.forEach(vm.extension.fieldset.sections, function(section) {
             _.forEach(section.fields, function(field) {
-                fields[field.handle] = entry[field.handle] || null
+                fields[field.handle] = vm.entry[field.handle] || null
             })
         })
     }
