@@ -40,6 +40,13 @@ function init(vm, response, fields, dataCallback) {
         })
     }
 
+    if (vm.extension && vm.extension.blueprint) {
+        _.forEach(vm.extension.blueprint.sections, function(section) {
+            _.forEach(section.fields, function(field) {
+                fields[field.handle] = vm.entry[field.handle] || null
+            })
+        })
+    }
 
     vm.form = new Form(fields, true)
 }
