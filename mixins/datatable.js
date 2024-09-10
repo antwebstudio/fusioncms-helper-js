@@ -11,6 +11,7 @@ export default {
             sortable: [],
             records: [],
             search: '',
+            datatable_filters: {},
 
             pagination: {
                 totalRecords: 0,
@@ -52,6 +53,16 @@ export default {
                 perPage: this.pagination.perPage,
                 append: this.appendable.join(','),
                 ...params,
+            }
+            
+            if (this.datatable_filters) {
+                Object.keys(this.datatable_filters).forEach((key) => {
+                    if (typeof(this.datatable_filters[key]) == 'object') {
+                        params['filter['+ key + '][]'] = this.datatable_filters[key]
+                    } else {
+                        params['filter['+ key + ']'] = this.datatable_filters[key]
+                    }
+                })
             }
 
             if (this.search !== '') {
