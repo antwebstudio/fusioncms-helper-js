@@ -3,6 +3,9 @@
   "version": "0.0.7",
   "main": "./index.js",
   "bin": "./cli.js",
+  "scripts": {
+    "test": ""
+  },
   "dependencies": {
     "axios": "^0.21.1",
     "flat": "^5.0.2",
