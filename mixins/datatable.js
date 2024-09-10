@@ -3,7 +3,7 @@ import queryString from 'query-string'
 export default {
     data() {
         return {
-            perPage: 10,
+            perPage: 20,
             loading: true,
             displayable: [],
             appendable: [],
